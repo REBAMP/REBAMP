@@ -1,0 +1,49 @@
+<!-- argentina.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revamp - Argentina</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
+</head>
+<body>
+  <h1>Productos en Argentina</h1>
+  <div id="productos">
+    <div>
+      <h2>Notebook Gamer</h2>
+      <!-- Acá va el botón de compra -->
+      <div id="buy-button-1"></div>
+    </div>
+    <div>
+      <h2>Televisor Smart 55"</h2>
+      <div id="buy-button-2"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    (function () {
+      var client = ShopifyBuy.buildClient({
+        domain: 'TU-TIENDA.myshopify.com', // <--- CAMBIAR POR TU DOMINIO DE TIENDA SHOPIFY
+        storefrontAccessToken: 'TU-TOKEN',  // <--- CAMBIAR POR TU TOKEN DE ACCESO
+      });
+
+      ShopifyBuy.UI.onReady(client).then(function (ui) {
+        ui.createComponent('product', {
+          id: 'PRODUCTO_ID_1', // <--- CAMBIAR POR ID REAL
+          node: document.getElementById('buy-button-1'),
+          moneyFormat: '%24%7B%7Bamount%7D%7D',
+          options: {/* opciones de estilo aquí */}
+        });
+        ui.createComponent('product', {
+          id: 'PRODUCTO_ID_2',
+          node: document.getElementById('buy-button-2'),
+          moneyFormat: '%24%7B%7Bamount%7D%7D',
+          options: {/* opciones de estilo aquí */}
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
